@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Go - Accesorios y Gadgets</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Paleta de Colores GadgetGo */
+        :root {
+            --primary-color: #4A90E2;   /* Azul Rey Suave */
+            --secondary-color: #FDF6E3; /* Crema */
+            --accent-color: #B4D4F8;    /* Azul Claro */
+            --text-color: #1F2937;      /* Azul Oscuro/Gris */
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: white !important;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Sección Hero con fondo crema */
+        .hero {
+            background-color: var(--secondary-color);
+            min-height: 70vh; /* Usamos min-height para asegurar altura */
+            color: var(--text-color);
+            padding: 5rem 0;
+        }
+
+        /* Botón principal con el color primario */
+        .btn-tech {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+            padding: 0.75rem 2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-tech:hover {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .product-card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Sección "Nosotros" con fondo azul claro */
+        #nosotros {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+        }
+        
+        #nosotros .section-title {
+            color: var(--primary-color);
+        }
+
+        /* Footer con fondo oscuro para anclar la página */
+        .footer {
+            background-color: var(--text-color);
+            color: white;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* INICIO: Estilos PWA para el botón de instalar */
+        #btnInstall {
+            position: fixed; right: 16px; bottom: 16px;
+            padding: 12px 16px; border: 0; border-radius: 10px;
+            /* Usamos tu color primario para el botón */
+            background: var(--primary-color); 
+            color: white; font-size: 14px; cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,.2); z-index: 9999;
+        }
+        #btnInstall[hidden] { display: none; }
+        /* FIN: Estilos PWA */
+    </style>
+
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#4A90E2" />
+    
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-microchip" style="color: var(--primary-color);"></i>
+                <span style="color: var(--text-color);">Gadget Go</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAlt">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAlt">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio" style="color: var(--text-color);">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productos" style="color: var(--text-color);">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros" style="color: var(--text-color);">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto" style="color: var(--text-color);">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero d-flex align-items-center" id="inicio">
+        <div class="container text-center"> <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="mb-4">
+                        <img src="hero-gadgets.jpg" alt="Gadgets y Accesorios" class="img-fluid rounded-circle shadow-lg" style="max-width: 300px; height: 300px; object-fit: cover;">
+                    </div>
+                    <h1 class="display-4 fw-bold mb-3">Conecta tu Mundo.</h1>
+                    <p class="lead mb-4">Los mejores gadgets y accesorios para tu vida digital.</p>
+                    <a href="#productos" class="btn btn-tech btn-lg">Ver Productos</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-5" id="productos">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Novedades Destacadas</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card product-card h-100 text-center">
+                        <img src="Imagen5.png" class="card-img-top" alt="Audífonos Inalámbricos">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Mouse Inalambrico Gamer</h5>
+                            <p class="card-text text-muted">Movimiento rapido y respuesta rapida y veloz.</p>
+                            <a href="#" class="btn btn-sm btn-tech d-block mt-3">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card product-card h-100 text-center">
+                        <img src="Imagen4.png" class="card-img-top" alt="Smartwatch">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Teclado blanco</h5>
+                            <p class="card-text text-muted">Teclas sensibles al tacto y agiles al momento de escribir.</p>
+                            <a href="#" class="btn btn-sm btn-tech d-block mt-3">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card product-card h-100 text-center">
+                        <img src="Imagen1.png" class="card-img-top" alt="PC Gamer">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">PC Gamer de Alto Rendimiento</h5>
+                            <p class="card-text text-muted">
+                                Rápida y potente, con tarjeta gráfica veloz y procesador de excelente respuesta.
+                            </p>
+                            <a href="#" class="btn btn-sm btn-tech d-block mt-3">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="nosotros" style="background-color: var(--accent-color);">
+        <div class="container text-center"> <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="mb-4">
+                        <img src="tienda-tech.jpg" alt="Nuestra Tienda" class="img-fluid rounded shadow">
+                    </div>
+                    <h2 class="mb-4 section-title">Nuestra Promesa</h2>
+                    <p class="lead" style="color: var(--text-color);">En Gadget Go, creemos en la innovación accesible. Seleccionamos solo lo mejor para ti.</p>
+                    
+                    <ul class="list-unstyled d-inline-block text-start mx-auto">
+                        <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> Calidad Garantizada: Productos probados y con garantía.</li>
+                        <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> Soporte Premium: Estamos aquí para ayudarte.</li>
+                        <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> Envío Rápido: Recibe tus gadgets sin demoras.</li>
+                    </ul>
+                    
+                    <div>
+                        <a href="#" class="btn btn-tech mt-3">Conoce Nuestra Historia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="contacto">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Escríbenos</h2>
+            <div class="row justify-content-center g-4">
+                
+                <div class="col-lg-5">
+                    <h4 class="fw-bold" style="color: var(--primary-color);">Información de Contacto</h4>
+                    <p>¿Dudas sobre un producto o tu pedido? Estamos aquí para ayudarte. También puedes contactarnos directamente:</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3 fs-5">
+                            <i class="fas fa-phone me-2" style="color: var(--primary-color);"></i>
+                            +52 55 1234 5678
+                        </li>
+                        <li class="mb-3 fs-5">
+                            <i class="fas fa-envelope me-2" style="color: var(--primary-color);"></i>
+                            soporte@gadgetgo.com
+                        </li>
+                        <li class="mb-3 fs-5">
+                            <i class="fas fa-map-marker-alt me-2" style="color: var(--primary-color);"></i>
+                            Av. de la Tecnología 123
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-7">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Nombre Completo" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Correo Electrónico" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="5" placeholder="Tu Mensaje..." required></textarea>
+                            </div>
+                            <div class="col-12 text-end"> <button type="submit" class="btn btn-tech btn-lg">Enviar Consulta</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-5">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold"><i class="fas fa-microchip me-2"></i> Gadget Go</h5>
+                    <p class="text-white-50">Innovación a tu alcance.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Explora</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Soporte al Cliente</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Síguenos</h5>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-white border-opacity-25">
+                <small>&copy; 2025 Gadget Go. Todos los derechos reservados.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <button id="btnInstall" hidden>Instalar app</button>
+
+    </body>
+</html>
